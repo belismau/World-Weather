@@ -1,15 +1,33 @@
 class Form extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            value: ''
+        };
+
         this.form = React.createRef();
         this.city = React.createRef();
         this.submit = React.createRef();
-        this.getData = this.getData.bind(this)
+        this.getData = this.getData.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(event) {
+        this.setState({
+            value: event.target.value
+        });
+    }
+
+    handleSubmit(event) {
+        console.log(this.state.value);
+        event.preventDefault();
     }
 
     getData() {
         $.ajax({
-            url: 'http://api.weatherstack.com/current?access_key=022211437e195a49d3c3bf73543375c4&query=' + city + '',
+            url: 'http://api.weatherstack.com/current?access_key=022211437e195a49d3c3bf73543375c4&query=' + this.state.value + '',
             dataType: 'JSON'
         }).done(function(data) {
     
@@ -48,9 +66,9 @@ class Form extends React.Component {
 
     render() {
         return (
-            <form ref={this.form} action="#" method="GET" id="form">
-                <input ref={this.city} id="title" placeholder="Enter city..." />
-                <button ref={this.submit} type="submit" id="submit" onClick={this.getData}> Search </button>
+            <form action="#" method="GET" id="form" onSubmit={this.handleSubmit}>
+                <input id="title" value={this.state.value} onChange={this.handleChange} placeholder="Enter city..." />
+                <button type="submit" id="submit" onClick={this.getData}> Search </button>
             </form>
         )
     }
