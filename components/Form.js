@@ -3,12 +3,10 @@ class Form extends React.Component {
         super(props);
 
         this.state = {
-            value: ''
+            value: '',
+            saveWeather: []
         };
 
-        this.form = React.createRef();
-        this.city = React.createRef();
-        this.submit = React.createRef();
         this.getData = this.getData.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,41 +31,54 @@ class Form extends React.Component {
             url: 'http://api.weatherstack.com/current?access_key=022211437e195a49d3c3bf73543375c4&query=' + this.state.value + '',
             dataType: 'JSON'
         }).done(function(data) {
+            if (data.success != false) {
+                let element = document.createElement('div');
+                element.setAttribute("id", "information")
+                document.getElementById('root').append(element);
 
-            let information = [
-                data.location.name,                 // Name of the city
-                data.location.country,              // City land
-                data.current.temperature,           // Current temperature
-                data.current.weather_icons,         // All icons related to the current weather 
-                data.current.weather_descriptions,  // All weather descriptions realted to the current weather
-                data.current.wind_speed,            // Current wind speed
-                data.current.feelslike,             // Feels like
-                data.current.cloudcover,            // Cloud Cover
-            ]
+                createElement('City: ', data.location.name)
+                createElement('Country: ', data.location.country)
+                createElement('Temperature: ', data.current.temperature)
+                createElement('Wind speed: ', data.current.wind_speed)
+                createElement('Feels like: ', data.current.feelslike)
+                createElement('Cloud cover: ', data.current.cloudcover)
+                createElement('Weather description: ', (data.current.weather_descriptions)[0])
+                createImage((data.current.weather_icons)[0])
 
-            let element = document.createElement('div');
-            element.setAttribute("id", "information")
-            document.getElementById('root').append(element);
-
-            createElement('City: ', data.location.name)
-            createElement('Country: ', data.location.country)
-            createElement('Temperature: ', data.current.temperature)
-            createElement('Wind speed: ', data.current.wind_speed)
-            createElement('Feels like: ', data.current.feelslike)
-            createElement('Cloud cover: ', data.current.cloudcover)
-            createElement('Weather description: ', (data.current.weather_descriptions)[0])
-            createImage((data.current.weather_icons)[0])
-    
-        }).fail(function(data) {
+            } else {
+                alert('Error: No data was found. Try again.')
+            }
+        }).fail(function() {
             console.log(data)
         })
     }
 
+    appendChild() {
+        let myItems = {
+            city: 'hello'
+        }
+        
+        this.setState({
+            saveWeather: [this.state.saveWeather, <SaveWeather items={myItems} key="1" />]
+        });
+    }
+
     render() {
         return (
-            <form action="#" method="GET" id="form" onSubmit={this.handleSubmit}>
-                <input id="title" value={this.state.value} onChange={this.handleChange} placeholder="Enter city..." />
-                <button type="submit" id="submit" onClick={this.getData}> Search </button>
+            <form action="#" method="GET" id="form" onSubmit={() => this.appendChild()}>
+                <input 
+                    id="title" 
+                    value={this.state.value} 
+                    onChange={this.handleChange} 
+                    placeholder="Enter city..." 
+                />
+                <button 
+                    type="submit" 
+                    id="submit" 
+                    onClick={this.getData}> 
+                    Search 
+                </button>
+                {this.state.saveWeather}
             </form>
         )
     }

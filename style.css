@@ -1,0 +1,9 @@
+#saveWeather {
+    font-size: 30px;
+}
+
+i {
+    margin-top: 20px;
+    cursor: pointer;
+    color: rgb(202, 202, 48);
+}
