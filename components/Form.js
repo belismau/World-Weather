@@ -21,43 +21,42 @@ class Form extends React.Component {
     }
 
     handleSubmit(event) {
-        console.log(this.state.value);
         event.preventDefault();
     }
 
     getData() {
+        if (document.getElementById('information')) {
+            document.getElementById('information').remove();
+        }
+
         $.ajax({
             url: 'http://api.weatherstack.com/current?access_key=022211437e195a49d3c3bf73543375c4&query=' + this.state.value + '',
             dataType: 'JSON'
         }).done(function(data) {
-    
-            // Information about the city
-            let name = data.location.name;
-            let country = data.location.country;
-    
-            // Information about the weather
-            let temperature = data.current.temperature;
-    
-            let weatherIcons = []
-            for (let i = 0; i <= (data.current.weather_icons).lenght; i++) {
-                weatherIcons.push(data.current.weather_icons[i])
-            }
-    
-            let weatherDescriptions = []
-            for (let z = 0; z <= (data.current.weather_descriptions).lenght; z++) {
-                weatherDescriptions.push(data.current.weather_descriptions[z])
-            }
-    
-            let windSpeed = data.current.wind_speed;
-            let feelsLike = data.current.feelslike;
-            let cloudCover = data.current.cloudcover;
-    
-            console.log(data)
-    
-            let element = document.createElement('p');
-            let information = document.createTextNode(name);
-            element.appendChild(information);
-            document.getElementsByTagName('body')[0].append(element);
+
+            let information = [
+                data.location.name,                 // Name of the city
+                data.location.country,              // City land
+                data.current.temperature,           // Current temperature
+                data.current.weather_icons,         // All icons related to the current weather 
+                data.current.weather_descriptions,  // All weather descriptions realted to the current weather
+                data.current.wind_speed,            // Current wind speed
+                data.current.feelslike,             // Feels like
+                data.current.cloudcover,            // Cloud Cover
+            ]
+
+            let element = document.createElement('div');
+            element.setAttribute("id", "information")
+            document.getElementById('root').append(element);
+
+            createElement('City: ', data.location.name)
+            createElement('Country: ', data.location.country)
+            createElement('Temperature: ', data.current.temperature)
+            createElement('Wind speed: ', data.current.wind_speed)
+            createElement('Feels like: ', data.current.feelslike)
+            createElement('Cloud cover: ', data.current.cloudcover)
+            createElement('Weather description: ', (data.current.weather_descriptions)[0])
+            createImage((data.current.weather_icons)[0])
     
         }).fail(function(data) {
             console.log(data)
@@ -72,4 +71,18 @@ class Form extends React.Component {
             </form>
         )
     }
+}
+
+function createElement(text, name) {
+    let allText = text + name
+    let element = document.createElement('p');
+    let textNode = document.createTextNode(allText);
+    element.appendChild(textNode);
+    document.getElementById('information').append(element);
+}
+
+function createImage(url) {
+    let element = document.createElement('img');
+    element.setAttribute('src', url)
+    document.getElementById('information').append(element);
 }
