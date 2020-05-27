@@ -27,6 +27,10 @@ class Form extends React.Component {
             document.getElementById('information').remove();
         }
 
+        if (localStorage.getItem('city') != this.state.value) {
+            document.getElementsByClassName('fa-star')[0].style.color = '#dbdbdb';
+        }
+
         $.ajax({
             url: 'http://api.weatherstack.com/current?access_key=022211437e195a49d3c3bf73543375c4&query=' + this.state.value + '',
             dataType: 'JSON'
