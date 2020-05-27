@@ -6,8 +6,8 @@ class SaveWeather extends React.Component {
     }
 
     save() {
-        console.log(this.props.items.city)
-        localStorage.setItem('working', 'true')
+        console.log(this.props.city)
+        localStorage.setItem('city', this.props.city)
     }
 
     render() {

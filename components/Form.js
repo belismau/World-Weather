@@ -3,8 +3,7 @@ class Form extends React.Component {
         super(props);
 
         this.state = {
-            value: '',
-            saveWeather: []
+            value: ''
         };
 
         this.getData = this.getData.bind(this);
@@ -23,6 +22,7 @@ class Form extends React.Component {
     }
 
     getData() {
+
         if (document.getElementById('information')) {
             document.getElementById('information').remove();
         }
@@ -53,19 +53,9 @@ class Form extends React.Component {
         })
     }
 
-    appendChild() {
-        let myItems = {
-            city: 'hello'
-        }
-        
-        this.setState({
-            saveWeather: [this.state.saveWeather, <SaveWeather items={myItems} key="1" />]
-        });
-    }
-
     render() {
         return (
-            <form action="#" method="GET" id="form" onSubmit={() => this.appendChild()}>
+            <form action="#" method="GET" id="form">
                 <input 
                     id="title" 
                     value={this.state.value} 
@@ -78,7 +68,7 @@ class Form extends React.Component {
                     onClick={this.getData}> 
                     Search 
                 </button>
-                {this.state.saveWeather}
+                <SaveWeather city={this.state.value} />
             </form>
         )
     }
