@@ -29,6 +29,8 @@ class Form extends React.Component {
 
         if (localStorage.getItem('city') != this.state.value) {
             document.getElementsByClassName('fa-star')[0].style.color = '#dbdbdb';
+        } else {
+            document.getElementsByClassName('fa-star')[0].style.color = 'yellow';
         }
 
         $.ajax({
