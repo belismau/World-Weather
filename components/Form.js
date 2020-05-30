@@ -22,7 +22,7 @@ class Form extends React.Component {
     }
 
     getData() {
-
+        // test
         if (document.getElementById('information')) {
             document.getElementById('information').remove();
         }
