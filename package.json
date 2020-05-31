@@ -1,0 +1,26 @@
+{
+  "name": "world-weather",
+  "version": "1.0.0",
+  "description": "A web application to find the local weather forecast using [Weatherstack API](https://weatherstack.com/).",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/augarn/World-Weather.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/augarn/World-Weather/issues"
+  },
+  "homepage": "https://github.com/augarn/World-Weather#readme",
+  "dependencies": {
+    "babel-standalone": "^6.26.0",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.5.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
