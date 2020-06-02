@@ -1,11 +1,13 @@
 class Welcome extends React.Component {
     render() {
         return (
-            <div>
-                <h2> World Weather Web App </h2>       
+            <div id="welcomePage">
+                <div id="sunIcon">
+                    <i className="fa fa-sun-o"></i>
+                </div>
+                <h1> A world weather web application to find the local <span>weather</span> forecast using Weatherstack <span>API</span>. </h1>
+                <div id="scrollDown"></div>
             </div>
         )
     }
 }
-
-// Fyll i denna i efterhand när utseendet byggs, ex huvudrubrik osv.

@@ -1,3 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+    color: #e6e6e6;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* First Page */
+
+#welcomePage {
+    height: 100vh;
+    width: 100%;
+    background-color: #1d1d1d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+
+#welcomePage > h1 {
+    margin: 0 20px;
+    text-shadow: 0 0 3px black;
+    text-align: center;
+    max-width: 600px;
+    line-height: 45px;
+}
+
+#welcomePage > h1 > span:nth-child(1) {
+    color: #ffff6d;
+}
+
+#welcomePage > h1 > span:nth-child(2) {
+    color: #ffff6d;
+}
+
+#sunIcon {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+#sunIcon > i {
+    margin-top: 0;
+    color: #ffff6d;
+}
+
+#scrollDown {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 50px;
+    width: 4px;
+    background-color: #ffff6d;
+    animation: scrollDown 1s infinite alternate;
+}
+
+@keyframes scrollDown {
+    from {
+        height: 50px;
+    }
+    to {
+        height: 30px;
+    }
+}
+
+
+
 #saveWeather {
     font-size: 30px;
 }
