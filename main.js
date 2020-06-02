@@ -17,6 +17,8 @@ if (localStorage.getItem('city') != null) {
         createElement('Weather description: ', (data.current.weather_descriptions)[0])
         createImage((data.current.weather_icons)[0])
 
+        document.getElementById('saveWeather').style.display = 'block';
+
     }).fail(function() {
         console.log(data)
     })

@@ -3,7 +3,6 @@
 * {
     box-sizing: border-box;
     font-family: 'Rubik', sans-serif;
-    color: #e6e6e6;
 }
 
 body {
@@ -25,6 +24,7 @@ body {
 }
 
 #welcomePage > h1 {
+    color: #e6e6e6;
     margin: 0 20px;
     text-shadow: 0 0 3px black;
     text-align: center;
@@ -70,14 +70,72 @@ body {
     }
 }
 
+/* Input Page */
 
+#inputPage {
+    background-color: #292929;
+    padding: 100px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#inputPage > h2 {
+    color: white;
+    text-align: center;
+    margin: 0 20px 30px 20px;
+}
+
+#inputPage > h2 > span {
+    color: #ffff6d;
+}
+
+#form {
+    position: relative;
+    max-width: 250px;
+}
+
+#searchIcon {
+    display: inline-block;
+    position: absolute;
+    right: 15px;
+    top: 47%;
+    transform: translateY(-47%);
+}
+
+#searchIcon > i {
+    margin-top: 0;
+    color: #696969;
+}
+
+#title {
+    padding: 15px 20px;
+    min-width: 250px;
+    outline: none;
+    border: 0;
+    border-radius: 5px;
+}
+
+/* Presentation Page */
+
+#information {
+    background-color: #303030;
+    text-align: center;
+}
+
+#information > p {
+    margin: 0;
+}
 
 #saveWeather {
     font-size: 30px;
+    display: none;
+    color: white;
 }
 
 i {
-    margin-top: 20px;
+    margin-top: 30px;
     cursor: pointer;
     color: #dbdbdb;
 }

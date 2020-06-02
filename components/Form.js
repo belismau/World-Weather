@@ -22,7 +22,8 @@ class Form extends React.Component {
     }
 
     getData() {
-        // test
+        document.getElementById('saveWeather').style.display = 'block';
+
         if (document.getElementById('information')) {
             document.getElementById('information').remove();
         }
@@ -61,21 +62,24 @@ class Form extends React.Component {
 
     render() {
         return (
-            <form action="#" method="GET" id="form">
-                <input 
-                    id="title" 
-                    value={this.state.value} 
-                    onChange={this.handleChange} 
-                    placeholder="Enter city..." 
-                />
-                <button 
-                    type="submit" 
-                    id="submit" 
-                    onClick={this.getData}> 
-                    Search 
-                </button>
+            <div id="inputPage">
+                <h2> Enter a <span>city</span> below in the input field. </h2>
+                <form action="#" method="GET" id="form">
+                    <input 
+                        id="title" 
+                        value={this.state.value} 
+                        onChange={this.handleChange} 
+                        placeholder="Ex: London" 
+                    />
+                    <div id="searchIcon">
+                        <i 
+                            className="fa fa-search"
+                            onClick={this.getData}>
+                        </i>
+                    </div>
+                </form>
                 <SaveWeather city={this.state.value} />
-            </form>
+            </div>
         )
     }
 }
