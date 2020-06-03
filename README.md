@@ -23,36 +23,10 @@ To get started, follow the steps below.
 
 ### Installation
 
-You will need to install the libraries/frameworks below:
-
-JQuery (mostly for Ajax in this project):
+Install all local dependencies with the command below:
 
 ```
-npm install jquery
-```
-
-React:
-
-```
-npm install react 
-```
-
-React-DOM (to render):
-
-```
-npm install react-dom
-```
-
-Babel standalone:
-
-```
-npm install babel-standalone
-```
-
-Font Awesome (for icons):
-
-```
-npm install font-awesome
+npm install
 ```
 
 A live-server is also necessary. As it says in https://github.com/tapio/live-server, AJAX requests don't work with the ```file://``` protocol due to security restrictions. Therefore, a [server](https://github.com/tapio/live-server) is needed. 
