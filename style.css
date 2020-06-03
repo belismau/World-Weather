@@ -74,7 +74,7 @@ body {
 
 #inputPage {
     background-color: #292929;
-    padding: 100px 50px;
+    padding: 100px 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -84,7 +84,7 @@ body {
 #inputPage > h2 {
     color: white;
     text-align: center;
-    margin: 0 20px 30px 20px;
+    margin: 0 30px 30px 30px;
 }
 
 #inputPage > h2 > span {
@@ -106,7 +106,7 @@ body {
 
 #searchIcon > i {
     margin-top: 0;
-    color: #696969;
+    color: black;
 }
 
 #title {
@@ -114,18 +114,12 @@ body {
     min-width: 250px;
     outline: none;
     border: 0;
-    border-radius: 5px;
+    border-radius: 2px;
+    background-color: #ffff6d;
 }
 
-/* Presentation Page */
-
-#information {
-    background-color: #303030;
-    text-align: center;
-}
-
-#information > p {
-    margin: 0;
+::placeholder {
+    color: #1f1f1f;
 }
 
 #saveWeather {
@@ -138,4 +132,58 @@ i {
     margin-top: 30px;
     cursor: pointer;
     color: #dbdbdb;
+}
+
+/* Presentation Page */
+
+#information {
+    background-color: #242424;
+    padding: 100px 0 130px 0;
+}
+
+#city {
+    color: white;
+    text-align: center;
+    margin: 15px 30px 20px 30px;
+    text-shadow: 0 0 3px black;
+}
+
+img {
+    max-width: 3em;
+    max-height: 3em;
+    margin: 0 auto;
+    display: block;
+    box-shadow: 0 0 3px black;
+}
+
+#information > #content {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+#information > #content > div {
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background-color: white;
+}
+
+#information > #content > div > p {
+    margin: 10px 0;
+}
+
+#information > #content > div:nth-child(1), #information > #content > div:nth-child(2) {
+    font-size: 22px;
+}
+
+@media screen and (max-width: 480px) {
+    #information > #content {
+        grid-template-columns: 1fr;
+    }
 }
